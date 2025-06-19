@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Mom - A Tribute to Your Amazing Life</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            margin: 30px 0;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero {
+            text-align: center;
+            background: linear-gradient(135deg, #ff6b9d, #ffd93d);
+            color: white;
+            padding: 60px 40px;
+            border-radius: 25px;
+            margin-bottom: 40px;
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .hero p {
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .section h2 {
+            font-size: 2.5em;
+            color: #4a5568;
+            margin-bottom: 25px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b9d, #ffd93d);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+
+        .section p {
+            font-size: 1.3em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #2d3748;
+        }
+
+        .nurse-section {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            border-left: 8px solid #2196f3;
+        }
+
+        .mother-section {
+            background: linear-gradient(135deg, #fce4ec, #f8bbd9);
+            border-left: 8px solid #e91e63;
+        }
+
+        .hobbies-section {
+            background: linear-gradient(135deg, #f3e5f5, #e1bee7);
+            border-left: 8px solid #9c27b0;
+        }
+
+        .strength-section {
+            background: linear-gradient(135deg, #fff3e0, #ffcc02);
+            border-left: 8px solid #ff9800;
+        }
+
+        .image-gallery {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .image-container {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+            max-width: 300px;
+        }
+
+        .image-container:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .heart {
+            color: #e91e63;
+            font-size: 1.2em;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-heart {
+            position: absolute;
+            color: rgba(233, 30, 99, 0.6);
+            font-size: 20px;
+            animation: float 8s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .music-note {
+            font-size: 1.5em;
+            color: #9c27b0;
+            margin: 0 10px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .final-message {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-align: center;
+            padding: 50px;
+            border-radius: 25px;
+            margin-top: 40px;
+        }
+
+        .final-message h2 {
+            color: white;
+            font-size: 2.8em;
+            margin-bottom: 25px;
+        }
+
+        .final-message p {
+            font-size: 1.4em;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5em; }
+            .section h2 { font-size: 2em; }
+            .section p { font-size: 1.1em; }
+            .image-gallery { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-hearts"></div>
+    
+    <!-- Audio player (hidden) -->
+    <audio id="backgroundMusic" loop>
+        <source src="mothers_song.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <!-- Music control button -->
+    <div style="position: fixed; top: 20px; right: 20px; z-index: 1000;">
+        <button id="musicToggle" style="background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 60px; height: 60px; font-size: 24px; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">🎵</button>
+    </div>
+    
+    <div class="container">
+        <div class="hero section visible">
+            <h1>Happy Birthday, Mom! <span class="heart">♥</span></h1>
+            <p><span class="music-note">♪</span> A celebration of your amazing life <span class="music-note">♪</span></p>
+            <p>With all my love and endless gratitude</p>
+        </div>
+
+        <div class="section nurse-section">
+            <h2>Your Calling as a Healer <span class="heart">♥</span></h2>
+            <p>You chose a profession that mirrors your beautiful soul - caring for others, bringing comfort in their darkest hours, and being a beacon of hope. As a nurse, you've touched countless lives with your gentle hands and compassionate heart.</p>
+            <p>Every patient you've cared for, every family you've comforted, every life you've helped save - they all bear witness to the incredible woman you are. Your dedication to healing others shows the depth of your love for humanity.</p>
+        </div>
+
+        <div class="section mother-section">
+            <h2>The Heart of Our Family <span class="heart">♥</span></h2>
+            <p>Raising five children is no small feat, but you made it look like the most natural thing in the world. You were our first teacher, our protector, our biggest cheerleader, and our safe harbor in every storm.</p>
+            <p>You taught us kindness through your example, strength through your resilience, and love through your endless sacrifices. Each of us carries a piece of your beautiful heart wherever we go.</p>
+            <p>The memories we share, the laughter that filled our home, the way you could kiss away any hurt - these are the treasures that money can't buy and time can't erase.</p>
+        </div>
+
+        <div class="section hobbies-section">
+            <h2>Your Passions That Inspire Us <span class="heart">♥</span></h2>
+            <p>Your love for Star Wars shows us that it's never too late to embrace wonder and adventure. Whether you're cheering for the Rebellion or marveling at distant galaxies, you remind us to keep dreaming and believing in hope.</p>
+            
+            <div class="image-gallery">
+                <div class="image-container">
+                    <img src="https://lumiere-a.akamaihd.net/v1/images/star-wars-movies-and-series-guide-article-feature_a12ab7bb.jpeg?region=0,0,1600,900&width=768" alt="Star Wars Universe" />
+                </div>
+                <div class="image-container">
+                    <img src="https://cdn.theatlantic.com/thumbor/FDrBpH69ZKHB6f3GXqSqZZDc6_o=/199x0:1401x1202/1080x1080/media/img/mt/2014/04/leia/original.jpg" alt="Princess Leia - Strong Female Character" />
+                </div>
+            </div>
+            
+            <p>And your passion for 3D printing! Watching you create something from nothing, bringing ideas to life layer by layer - it's like watching magic happen. Your creativity and willingness to learn new technologies at any age is truly inspiring.</p>
+            <p>You show us that life is meant to be lived fully, with curiosity, passion, and joy in the simple things that make us smile.</p>
+        </div>
+
+        <div class="section strength-section">
+            <h2>Your Incredible Strength <span class="heart">♥</span></h2>
+            <p>The way you care for grandma with such patience, love, and grace shows the true gold in your heart. Not everyone could handle the challenges you face daily, but you do it with a smile and endless compassion.</p>
+            <p>Your strength isn't just physical - it's emotional, spiritual, and mental. You weather every storm with dignity and emerge stronger, more beautiful, and more loving than before.</p>
+            <p>This strength, this heart of gold, this unwavering love - these are the reasons you will live a long, beautiful life. The world needs more people like you, and we need you for many more years to come.</p>
+        </div>
+
+        <div class="final-message">
+            <h2>I Remember Every Day <span class="heart">♥</span></h2>
+            <p>Every morning I wake up grateful for having you as my mother. Every laugh we've shared, every hug you've given, every word of wisdom you've spoken - they're all treasures I carry in my heart.</p>
+            <p>You are my hero, my inspiration, and my greatest blessing. Your love has shaped who I am, and your strength continues to guide me every day.</p>
+            <p>Happy Birthday, Mom. Here's to many more years of your beautiful light shining in this world. I love you more than words could ever express. <span class="heart">♥</span></p>
+        </div>
+    </div>
+
+    <script>
+        // Animate sections on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Create floating hearts
+        function createFloatingHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'floating-heart';
+            heart.innerHTML = '♥';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDelay = Math.random() * 8 + 's';
+            heart.style.animationDuration = (Math.random() * 3 + 5) + 's';
+            
+            document.querySelector('.floating-hearts').appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 8000);
+        }
+
+        // Create hearts periodically
+        setInterval(createFloatingHeart, 2000);
+
+        // Initial hearts
+        for (let i = 0; i < 5; i++) {
+            setTimeout(createFloatingHeart, i * 1000);
+        }
+
+        // Smooth scrolling for better experience
+        document.documentElement.style.scrollBehavior = 'smooth';
+
+        // Music controls
+        const audio = document.getElementById('backgroundMusic');
+        const musicToggle = document.getElementById('musicToggle');
+        let isPlaying = false;
+
+        musicToggle.addEventListener('click', () => {
+            if (isPlaying) {
+                audio.pause();
+                musicToggle.innerHTML = '🎵';
+                musicToggle.style.background = 'rgba(255,255,255,0.9)';
+            } else {
+                audio.play().catch(e => {
+                    console.log('Audio play failed:', e);
+                    alert('Click to start the music!');
+                });
+                musicToggle.innerHTML = '🎶';
+                musicToggle.style.background = 'rgba(255,107,157,0.9)';
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // Try to autoplay (may not work due to browser policies)
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                audio.play().then(() => {
+                    isPlaying = true;
+                    musicToggle.innerHTML = '🎶';
+                    musicToggle.style.background = 'rgba(255,107,157,0.9)';
+                }).catch(() => {
+                    // Autoplay blocked, user will need to click
+                    console.log('Autoplay blocked - user interaction required');
+                });
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
